@@ -27,6 +27,13 @@ ALL_PHONEMES = {
         'oo', 'ou', 'p', 'r', 'rh', 'rx', 's', 'sh', 't', 'uh', 'un',
         'uy', 'v', 'w', 'y', 'z'
     },
+    # --- NEW LANGUAGE ADDED ---
+    'HY': {
+        'a', 'ax', 'b', 'ch', 'd', 'dx', 'dz', 'e', 'f', 'g', 'h', 'i', 'j',
+        'k', 'k\'', 'l', 'm', 'n', 'ng', 'o', 'p', 'p\'', 'r', 'rr', 's', 'sh',
+        't', 't\'', 'ts', 'u', 'v', 'w', 'x', 'y', 'z', 'zh'
+    },
+    # --- END OF NEW LANGUAGE ---
     'IT': {
         'Y', 'N', 'a', 'b', 'ch', 'd', 'dz', 'e', 'ee', 'f', 'g', 'gl',
         'gn', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'oo', 'p', 'q', 'r',
