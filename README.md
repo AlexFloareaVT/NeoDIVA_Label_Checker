@@ -24,6 +24,7 @@ The script recognizes folder names ending in the following language tags (case-i
 * `_ru` Russian (Lunai Phoneme Set)
 * `_th` Thai (PrintMOV Phoneme Set)
 * `_zh` Chinese (TGM Phoneme Set)
+* `_hy` Armenian (amihopeutau Phoneme Set) 
 
 ## 2. Save the Script
 
