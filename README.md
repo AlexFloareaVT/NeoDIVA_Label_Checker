@@ -27,7 +27,7 @@ The script recognizes folder names ending in the following language tags (case-i
 
 ## 2. Save the Script
 
-Save the Python code into a file named `check_phonemes.py`.
+Save the Python file anywhere on your computer, ideally in documents in it's own folder for organization.
 
 ## 3. Prepare Your Folders
 
@@ -56,7 +56,7 @@ All your `.lab` files should be placed directly inside these language-tagged fol
 
     ```bash
     # Example:
-    cd C:\Users\liv_t\Documents\LabelChecker
+    cd C:\Users\Example\Documents\LabelChecker
     ```
 
 3.  Once you are in the correct folder, run the script:
