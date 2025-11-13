@@ -146,7 +146,9 @@ def process_folder(dirpath, lab_files, lang_code, root_path):
     """
     Processes all .lab files in a given folder and generates a log file.
     """
-    print(f"--- Processing folder: {dirpath} (Language: {lang_code}) ---")
+    # Get relative path for privacy in console output
+    relative_dirpath = os.path.relpath(dirpath, root_path)
+    print(f"--- Processing folder: {relative_dirpath} (Language: {lang_code}) ---")
     log_entries = []
     lang_phoneme_set = ALL_PHONEMES[lang_code]
 
@@ -157,6 +159,7 @@ def process_folder(dirpath, lab_files, lang_code, root_path):
             with open(file_path, 'r', encoding='utf-8') as f:
                 lines = f.readlines()
         except Exception as e:
+            # log_file is just the filename, which is fine for privacy
             log_entries.append(f"CRITICAL ERROR: Could not read file {lab_file}. Reason: {e}\n")
             continue
 
@@ -187,23 +190,30 @@ def process_folder(dirpath, lab_files, lang_code, root_path):
     # Save the log in the root folder, not the subfolder
     log_file_path = os.path.join(root_path, log_file_name)
     
+    # Get relative path for log file output (for privacy)
+    relative_log_path = os.path.relpath(log_file_path, root_path)
+    
     try:
         with open(log_file_path, 'w', encoding='utf-8') as log_f:
-            log_f.write(f"Error Log for folder: {dirpath}\n")
+            # Use relative_dirpath (defined at start of function) for privacy
+            log_f.write(f"Error Log for folder: {relative_dirpath}\n")
             log_f.write(f"Detected Language: {lang_code}\n")
             log_f.write("=" * 30 + "\n\n")
             
             if log_entries:
                 # If there are errors, write them
                 log_f.writelines(log_entries)
-                print(f"!!! Issues found. Log file created at: {log_file_path}\n")
+                # Use relative_log_path for privacy
+                print(f"!!! Issues found. Log file created at: {relative_log_path}\n")
             else:
                 # If there are no errors, write "No errors found"
                 log_f.write("No errors found.\n")
-                print(f">>> No issues found. Log file created at: {log_file_path}\n")
+                # Use relative_log_path for privacy
+                print(f">>> No issues found. Log file created at: {relative_log_path}\n")
                 
     except Exception as e:
-        print(f"CRITICAL ERROR: Could not write log file {log_file_route}. Reason: {e}\n")
+        # Use relative_log_path for privacy and fix typo (was 'log_file_route')
+        print(f"CRITICAL ERROR: Could not write log file {relative_log_path}. Reason: {e}\n")
     # --- END OF MODIFIED SECTION ---
 
 
@@ -221,6 +231,8 @@ def main():
         print("Please run the script again.")
         sys.exit(1)
 
+    # Use the user-provided path as-is, since they just typed it.
+    # All *subsequent* paths will be relative to this.
     print(f"\nScanning all subfolders starting from: {root_folder_path}\n")
 
     # 2. Crawl through all subfolders
