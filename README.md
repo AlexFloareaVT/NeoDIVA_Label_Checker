@@ -1,21 +1,39 @@
 # NeoDIVA Phoneme .lab File Checker
 
-This Python script crawls a directory, finds subfolders containing `.lab` files, and validates the phonemes within them based on a language tag in the folder's name.
+This Python script crawls a directory, finds subfolders containing `.lab` files, and validates the phonemes within them based on a language tag in the folder's name. This script uses all the phoneme sets included in the NeoDIVA DiffSinger model, but should be applicable to most datasets.
 
 It checks for:
-* **Typos:** Phonemes not found in the global list or the specified language's phoneme set.
+* **Typos:** Phonemes not found in the global list or the specified language's phoneme set. (AP, SP, vf, q, cl, ctrash, vtrash and trash)
 * **Suggestions:** `pau` (suggests `SP`) and `br` (suggests `AP`).
 * **Tagged Phonemes:** Validates phonemes with language tags (e.g., `ja/a`).
 
-## 1. Save the Script
+## 1. Supported Languages
+
+The script recognizes folder names ending in the following language tags (case-insensitive):
+
+* `_en` English (Arpasing+ Phoneme Set)
+* `_es` Spanish (Namine Criss Phoneme Set)
+* `_fr` French (Millefeuille Phoneme Set)
+* `_it` Italian (Gianloop Phoneme Set)
+* `_ja` Japanese (Standard Phoneme Set)
+* `_ka` Georgian (Datawave Phoneme Set)
+* `_ko` Korean (Team CODA Phoneme Set)
+* `_pl` Polish (PixPrucer Phoneme Set)
+* `_pt` Portuguese (Brazillian, Team BRAPA Phoneme Set)
+* `_ro` Romanian (NeoDIVA Phoneme Set)
+* `_ru` Russian (Lunai Phoneme Set)
+* `_th` Thai (PrintMOV Phoneme Set)
+* `_zh` Chinese (TGM Phoneme Set)
+
+## 2. Save the Script
 
 Save the Python code into a file named `check_phonemes.py`.
 
-## 2. Prepare Your Folders
+## 3. Prepare Your Folders
 
 This is the most important step. The script is designed to find language codes in your folder names.
 
-* A folder's name **must** end with an underscore (`_`) followed by the two-letter language code (e.g., `_en`, `_es`, `_ja`).
+* A folder's name **must** end with an underscore (`_`) followed by one of the two-letter language codes listed above (e.g., `_en`, `_es`, `_ja`).
 * The script will skip any folder that does not match this format.
 
 ### Correct Folder Naming Examples:
@@ -31,7 +49,7 @@ C:\My_Data\Section_4\Speaker_10_ko
 
 All your `.lab` files should be placed directly inside these language-tagged folders.
 
-## 3. Run the Script
+## 4. Run the Script
 
 1.  Open your terminal (like **Command Prompt**, **PowerShell**, or **Windows Terminal**).
 2.  Use the `cd` command to move to the folder where you saved the `check_phonemes.py` file.
@@ -48,7 +66,7 @@ All your `.lab` files should be placed directly inside these language-tagged fol
     ```
     (You may need to use `py` instead of `python` depending on your setup).
 
-## 4. Enter the Root Folder Path
+## 5. Enter the Root Folder Path
 
 1.  The script will ask you:
     ```
@@ -57,7 +75,7 @@ All your `.lab` files should be placed directly inside these language-tagged fol
 2.  This is the main folder that *contains* all your language-tagged folders (like `C:\My_Data` from the example above).
 3.  Copy the full path to this root folder, paste it into the terminal, and press **Enter**.
 
-## 5. Check the Log Files
+## 6. Check the Log Files
 
 The script will scan all the subfolders.
 
