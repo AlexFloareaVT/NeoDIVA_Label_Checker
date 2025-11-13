@@ -1,4 +1,4 @@
-# NeoDIVA Phoneme .lab File Checker
+# NeoDIVA .lab Phoneme Error Checker
 
 This Python script crawls a directory, finds subfolders containing `.lab` files, and validates the phonemes within them based on a language tag in the folder's name. This script uses all the phoneme sets included in the NeoDIVA DiffSinger model, but should be applicable to most datasets.
 
